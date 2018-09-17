@@ -1,0 +1,15 @@
+{
+    "name": "hhennes/module-cms",
+    "description": "Add canonical tag to magento 2 cms pages",
+    "type": "magento2-module",
+    "version": "0.1.0",
+    "license": [
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Hhennes\\Cms\\": ""
+        }
+    }
+}
