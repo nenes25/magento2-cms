@@ -2,12 +2,12 @@
 
 namespace Hhennes\Cms\Block\Page;
 
-use \Magento\Framework\View\Element\AbstractBlock;
+use Magento\Framework\View\Element\AbstractBlock;
 
 class Canonical extends AbstractBlock
 {
 
-    /** @var \Magento\Cms\Model\Page */
+    /** @var \Magento\Cms\Model\Page|null */
     protected $_page;
 
     /** @var \Hhennes\Cms\Helper\Data */
@@ -42,14 +42,23 @@ class Canonical extends AbstractBlock
 
     /**
      * Get Canonical Page Url ( with or without trailing / )
+     * @return string|bool
      */
     public function getCanonicalPageUrl()
     {
-        if ($this->getPage() && $this->_helper->isCanonicalUrlEnable()) {
-            if ($this->_helper->useTrailingSlash()) {
-                $url = $this->getUrl($this->getPage()->getIdentifier());
+        if (null !== $this->getPage() && $this->_helper->isCanonicalUrlEnable()) {
+            if ($this->isHomePage()) {
+                if ($this->_helper->useTrailingSlash()) {
+                    $url = $this->getUrl('');
+                } else {
+                    $url = rtrim($this->getUrl(''), '/');
+                }
             } else {
-                $url = $this->getUrl() . $this->getPage()->getIdentifier();
+                if ($this->_helper->useTrailingSlash()) {
+                    $url = $this->getUrl($this->getPage()->getIdentifier());
+                } else {
+                    $url = $this->getUrl() . $this->getPage()->getIdentifier();
+                }
             }
             return $url;
         } else {
@@ -70,4 +79,14 @@ class Canonical extends AbstractBlock
         return '';
     }
 
+    /**
+     * Check if current url is url for home page
+     * @return bool
+     */
+    protected function isHomePage()
+    {
+        $currentUrl = $this->getUrl('', ['_current' => true]);
+        $urlRewrite = $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+        return $currentUrl == $urlRewrite;
+    }
 }

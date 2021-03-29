@@ -1,6 +1,8 @@
 <?php
 namespace Hhennes\Cms\Helper;
 
+use Magento\Store\Model\ScopeInterface;
+
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**
@@ -19,7 +21,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function isCanonicalUrlEnable()
     {
-        return $this->scopeConfig->isSetFlag(self::XML_PATH_CANONICAL_ENABLED, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->isSetFlag(
+            self::XML_PATH_CANONICAL_ENABLED,
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
@@ -28,7 +33,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function useTrailingSlash()
     {
-        return $this->scopeConfig->isSetFlag(self::XML_PATH_CANONICAL_USE_TRAILING_SLASH, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->isSetFlag(
+            self::XML_PATH_CANONICAL_USE_TRAILING_SLASH,
+            ScopeInterface::SCOPE_STORE
+        );
     }
-
 }
