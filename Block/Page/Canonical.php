@@ -25,8 +25,7 @@ class Canonical extends AbstractBlock
         array $data = [],
         \Magento\Cms\Model\Page $page,
         \Hhennes\Cms\Helper\Data $helper
-    )
-    {
+    ) {
         $this->_page = $page;
         $this->_helper = $helper;
         parent::__construct($context, $data);
