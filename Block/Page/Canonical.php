@@ -2,29 +2,32 @@
 
 namespace Hhennes\Cms\Block\Page;
 
+use Hhennes\Cms\Helper\Data;
+use Magento\Cms\Model\Page;
 use Magento\Framework\View\Element\AbstractBlock;
+use Magento\Framework\View\Element\Context;
 
 class Canonical extends AbstractBlock
 {
 
-    /** @var \Magento\Cms\Model\Page|null */
+    /** @var Page|null */
     protected $_page;
 
-    /** @var \Hhennes\Cms\Helper\Data */
+    /** @var Data */
     protected $_helper;
 
     /**
      * Canonical constructor.
-     * @param \Magento\Framework\View\Element\Context $context
+     * @param Context $context
      * @param array $data
-     * @param \Magento\Cms\Model\Page $page
-     * @param \Hhennes\Cms\Helper\Data $helper
+     * @param Page $page
+     * @param Data $helper
      */
     public function __construct(
-        \Magento\Framework\View\Element\Context $context,
-        array $data = [],
-        \Magento\Cms\Model\Page $page,
-        \Hhennes\Cms\Helper\Data $helper
+        Context $context,
+        Page $page,
+        Data $helper,
+        array $data = []
     ) {
         $this->_page = $page;
         $this->_helper = $helper;
@@ -32,7 +35,7 @@ class Canonical extends AbstractBlock
     }
 
     /**
-     * @return \Magento\Cms\Model\Page
+     * @return Page|null
      */
     public function getPage()
     {
