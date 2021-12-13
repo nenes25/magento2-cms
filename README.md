@@ -1,3 +1,5 @@
+[![Packagist Downloads Shield](https://img.shields.io/packagist/dt/hhennes/module-cms?label=packagist)](https://packagist.org/packages/hhennes/module-cms)
+
 # magento2-cms
 Add canonical attribute for cms pages  
 You can choose to use the one with or without the trailing slash in configuration
