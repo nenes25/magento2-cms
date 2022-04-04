@@ -50,7 +50,7 @@ class Canonical extends AbstractBlock
     {
         if (null !== $this->getPage() && $this->_helper->isCanonicalUrlEnable()) {
             if ($this->isHomePage()) {
-                if ($this->_helper->useTrailingSlash()) {
+                if ($this->_helper->useTrailingSlashForHomepage()) {
                     $url = $this->getUrl('');
                 } else {
                     $url = rtrim($this->getUrl(''), '/');

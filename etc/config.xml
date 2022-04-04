@@ -5,6 +5,7 @@
             <canonical>
                 <enable_canonical>1</enable_canonical>
                 <use_trailing_slash>0</use_trailing_slash>
+                <use_trailing_slash_homepage>0</use_trailing_slash_homepage>
             </canonical>
         </cms>
     </default>

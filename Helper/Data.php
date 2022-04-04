@@ -16,6 +16,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const XML_PATH_CANONICAL_USE_TRAILING_SLASH = 'cms/canonical/use_trailing_slash';
 
     /**
+     * Cms canonical use trailing slash for homepage config path
+     */
+    const XML_PATH_CANONICAL_USE_TRAILING_SLASH_HOMEPAGE = 'cms/canonical/use_trailing_slash_homepage';
+
+    /**
      * Return if canonical url is enabled
      * @return bool
      */
@@ -35,6 +40,18 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         return $this->scopeConfig->isSetFlag(
             self::XML_PATH_CANONICAL_USE_TRAILING_SLASH,
+            ScopeInterface::SCOPE_STORE
+        );
+    }
+
+    /**
+     * Return if we use the trailing slash for the homepage
+     * @return bool
+     */
+    public function useTrailingSlashForHomepage()
+    {
+        return $this->scopeConfig->isSetFlag(
+            self::XML_PATH_CANONICAL_USE_TRAILING_SLASH_HOMEPAGE,
             ScopeInterface::SCOPE_STORE
         );
     }

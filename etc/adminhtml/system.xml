@@ -2,7 +2,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <!-- Ajout d'un nouveau groupe dans la section cms existante -->
         <section id="cms">
             <group id="canonical" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1"
                    showInStore="1">
@@ -15,6 +14,11 @@
                 <field id="use_trailing_slash" translate="label" type="select" sortOrder="200" showInDefault="1" showInWebsite="1"
                        showInStore="1" canRestore="1">
                     <label>Use trailing slash</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="use_trailing_slash_homepage" translate="label" type="select" sortOrder="200" showInDefault="1" showInWebsite="1"
+                       showInStore="1" canRestore="1">
+                    <label>Use trailing slash for homepage</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
